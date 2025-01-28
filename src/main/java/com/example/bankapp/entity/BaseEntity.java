@@ -6,19 +6,28 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
 @MappedSuperclass
 public class BaseEntity {
+
+    @CreatedDate
     @Column(updatable=false,name = "created_at",nullable=false)
     private LocalDateTime createdAt;
 
+    @LastModifiedDate
     @Column(updatable=false,name="updated_at")
     private LocalDateTime updatedAt;
 
+
     @Column(name = "created_by",nullable=false)
     private String createdBy;
+
 
     @Column(name = "updated_by")
     private String updatedBy;

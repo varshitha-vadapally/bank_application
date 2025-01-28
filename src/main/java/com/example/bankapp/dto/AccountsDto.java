@@ -1,13 +1,22 @@
 package com.example.bankapp.dto;
 
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
 public class AccountsDto {
 
+    @NotEmpty(message = "no null account number")
+    @Pattern(regexp = "$|[0-9]{10}",message = "account number invalid")
     private Long accountNumber;
+
+    @NotEmpty(message = "no null account type")
     private String accountType;
+
+    @NotEmpty(message = "no null branch address")
+    private String branchAddress;
 
     public Long getAccountNumber() {
         return accountNumber;
@@ -33,5 +42,5 @@ public class AccountsDto {
         this.branchAddress = branchAddress;
     }
 
-    private String branchAddress;
+
 }
