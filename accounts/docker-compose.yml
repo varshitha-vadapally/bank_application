@@ -1,0 +1,41 @@
+services:
+  accounts:
+    image: "varshitha1617/accounts-1:latest"
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - varshitha1617
+
+  loans:
+    image: "varshitha1617/loans:1"
+    container_name: loans-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+
+    networks:
+      - varshitha1617
+
+  cards:
+    image: "varshitha1617/cards:1"
+    container_name: cards-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - varshitha1617
+
+networks:
+  varshitha1617:
+    driver: "git"
