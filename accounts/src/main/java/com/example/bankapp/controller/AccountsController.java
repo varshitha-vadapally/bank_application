@@ -1,5 +1,6 @@
 package com.example.bankapp.controller;
 
+import com.example.bankapp.dto.BuildVersionDto;
 import com.example.bankapp.dto.CustomerDto;
 import com.example.bankapp.dto.ResponseDto;
 import com.example.bankapp.service.IAccountsService;
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
 public class AccountsController {
     @Autowired
     private AccountsServiceImpl accountsService;
+
+    @Autowired
+    private BuildVersionDto buildVersionDto;
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createAccount( @RequestBody   CustomerDto customerDto) {
@@ -58,5 +62,10 @@ public class AccountsController {
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto("201", "Account creation failed"));
 
+    }
+    @GetMapping("/build-version")
+    public ResponseEntity<BuildVersionDto> fetchAccountDetails(){
+        System.out.println(buildVersionDto.version());
+        return ResponseEntity.status(HttpStatus.OK).body(buildVersionDto);
     }
 }

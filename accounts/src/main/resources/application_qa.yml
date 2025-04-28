@@ -1,0 +1,7 @@
+spring:
+  config:
+    active:
+      on-profile : "qa"
+build:
+  version : "2.0"
+  name : "QA"
