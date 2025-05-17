@@ -65,7 +65,7 @@ public class AccountsController {
     }
     @GetMapping("/build-version")
     public ResponseEntity<BuildVersionDto> fetchAccountDetails(){
-        System.out.println(buildVersionDto.version());
+        System.out.println(buildVersionDto.getVersion());
         return ResponseEntity.status(HttpStatus.OK).body(buildVersionDto);
     }
 }

@@ -1,8 +1,14 @@
 package com.example.bankapp.dto;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @ConfigurationProperties(prefix = "build")
-public record BuildVersionDto(String version,String name) {
+@Setter
+@Getter
+public class BuildVersionDto {
+    String version;
+    String name;
 }
